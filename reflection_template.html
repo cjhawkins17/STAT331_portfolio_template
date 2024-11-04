@@ -3118,19 +3118,14 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 3 Question 2</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code chunk for importing the data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>teacher_evals <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;teacher_evals.csv&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>xlsx</code></li>
 </ul>
 <p>Practice Activity 4 Question 3</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>military <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">&quot;gov_spending_per_capita.xlsx&quot;</span>), </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sheet =</span> <span class="st">&quot;Share of Govt. spending&quot;</span>, </span>
@@ -3138,24 +3133,18 @@ vertical-align: -.125em;
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">n_max =</span> <span class="dv">191</span>, </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&#39;NA&#39;</span>,<span class="st">&#39;. .&#39;</span>,<span class="st">&#39;xxx&#39;</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                      )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>txt</code></li>
 </ul>
 <p>Practice Activity 5 Question setup</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>message_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://github.com/earobinson95/stat331-calpoly/raw/master/practice-activities/data/scrambled_message.txt&quot;</span>,</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>WD-2: I can select necessary columns from a dataset.</strong></p>
 <p>Lab 3 Question 5</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="ot">&lt;-</span> teacher_evals <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;sex&quot;</span> <span class="ot">=</span> <span class="st">&quot;gender&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(no_participants <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
@@ -3170,7 +3159,6 @@ vertical-align: -.125em;
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>         seniority,</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>         sex) <span class="sc">|&gt;</span></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">teacher_id =</span> <span class="fu">as.integer</span>(teacher_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>WD-3: I can filter rows from a dataframe for a <em>variety</em> of data types (e.g., numeric, integer, character, factor, date).</strong></p>
 <ul>
@@ -3178,8 +3166,6 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 3 Question 5</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="ot">&lt;-</span> teacher_evals <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;sex&quot;</span> <span class="ot">=</span> <span class="st">&quot;gender&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(no_participants <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
@@ -3194,32 +3180,25 @@ vertical-align: -.125em;
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         seniority,</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>         sex) <span class="sc">|&gt;</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">teacher_id =</span> <span class="fu">as.integer</span>(teacher_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>character – specifically a string (example must use functions from <strong>stringr</strong>)</li>
 </ul>
 <p>Lab 5 Question Crime Scene Report</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>drivers_license <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(person, <span class="fu">join_by</span>(<span class="st">&quot;id&quot;</span> <span class="sc">==</span> <span class="st">&quot;license_id&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(plate_number, <span class="st">&quot;H42W&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>factor</li>
 </ul>
 <p>Lab 4 Question 2</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="ot">&lt;-</span> counties <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">&quot;California&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(county_fips_code, county_name) <span class="sc">|&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(childcare_costs, <span class="fu">join_by</span>(county_fips_code <span class="sc">==</span> county_fips_code))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>date (example must use functions from <strong>lubridate</strong>)</li>
@@ -3227,13 +3206,10 @@ vertical-align: -.125em;
 <p>Lab 5 Crime Scene Report</p>
 <p><em>I made a revision to this code. I added the mutate line. I realized that I could parse the date column into a date variable to make it easier to read. This is important because I don’t want readers to get confused when reading data.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>crime_scene_report <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date)) <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">==</span> <span class="st">&quot;SQL City&quot;</span>,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>         date <span class="sc">==</span> <span class="fu">ymd</span>(<span class="st">&quot;20180115&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>WD-4: I can modify existing variables and create new variables in a dataframe for a <em>variety</em> of data types (e.g., numeric, integer, character, factor, date).</strong></p>
 <ul>
@@ -3241,8 +3217,6 @@ vertical-align: -.125em;
 </ul>
 <p>Challenge 3 Question 1</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_compare <span class="ot">&lt;-</span> teacher_evals <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(question_no <span class="sc">==</span> <span class="dv">903</span>) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SET_level =</span> <span class="fu">if_else</span>(<span class="at">condition =</span> SET_score_avg <span class="sc">&gt;=</span> <span class="dv">4</span>,</span>
@@ -3252,15 +3226,12 @@ vertical-align: -.125em;
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                             <span class="at">true =</span> <span class="st">&quot;junior&quot;</span>,</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">false =</span> <span class="st">&quot;senior&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(course_id, SET_level, sen_level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>character – specifically a string (example must use functions from <strong>stringr</strong>)</li>
 </ul>
 <p>Lab 4 Question 3</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="ot">&lt;-</span> ca_childcare <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county_name =</span> <span class="fu">str_remove</span>(county_name, <span class="st">&quot; County&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">fct_collapse</span>(county_name,</span>
@@ -3322,15 +3293,12 @@ vertical-align: -.125em;
 <span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Orange County&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Orange&quot;</span>),</span>
 <span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;San Diego-Imperial&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;San Diego&quot;</span>,</span>
 <span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">&quot;Imperial&quot;</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>factor (example must use functions from <strong>forcats</strong>)</li>
 </ul>
 <p>Lab 4 Question 3</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="ot">&lt;-</span> ca_childcare <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county_name =</span> <span class="fu">str_remove</span>(county_name, <span class="st">&quot; County&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">fct_collapse</span>(county_name,</span>
@@ -3392,7 +3360,6 @@ vertical-align: -.125em;
 <span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Orange County&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Orange&quot;</span>),</span>
 <span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;San Diego-Imperial&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;San Diego&quot;</span>,</span>
 <span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">&quot;Imperial&quot;</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>date (example must use functions from <strong>lubridate</strong>)</li>
@@ -3400,13 +3367,10 @@ vertical-align: -.125em;
 <p>Lab 5 Crime Scene Report</p>
 <p><em>Code Was updated to use date variable tpye instead of integer. This makes the code easier to read.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>crime_scene_report <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date)) <span class="sc">|&gt;</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">==</span> <span class="st">&quot;SQL City&quot;</span>,</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         date <span class="sc">==</span> <span class="fu">ymd</span>(<span class="st">&quot;20180115&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>WD-5: I can use mutating joins to combine multiple dataframes.</strong></p>
 <ul>
@@ -3415,13 +3379,10 @@ vertical-align: -.125em;
 <p>Lab 5 Question Clue 3</p>
 <p><em>The code was updated the use a left join. This is to make sure only the values from the person dateset that matches with the interview dataset gets joined.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look though the interviews</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>interview <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(person, <span class="fu">join_by</span>(<span class="st">&quot;person_id&quot;</span> <span class="sc">==</span> <span class="st">&quot;id&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(person_id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">14887</span>, <span class="dv">16371</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>right_join()</code></li>
@@ -3429,20 +3390,15 @@ vertical-align: -.125em;
 <p>Lab 5 Question Clue 4</p>
 <p><em>The code was updated to use a right_join(). This makes sure the values that joins from the drivers_license dataset matches with the values from the person dataset.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>drivers_license <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(person, <span class="fu">join_by</span>(<span class="st">&quot;id&quot;</span> <span class="sc">==</span> <span class="st">&quot;license_id&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(plate_number, <span class="st">&quot;H42W&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>inner_join()</code></li>
 </ul>
 <p>Lab 5 Question Clue 5</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>person <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(drivers_license,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">join_by</span>(<span class="st">&quot;license_id&quot;</span> <span class="sc">==</span> <span class="st">&quot;id&quot;</span>)) <span class="sc">|&gt;</span></span>
@@ -3453,7 +3409,6 @@ vertical-align: -.125em;
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>         car_make <span class="sc">==</span> <span class="st">&quot;Tesla&quot;</span>,</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>         car_model <span class="sc">==</span> <span class="st">&quot;Model S&quot;</span>,</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>         event_name <span class="sc">==</span> <span class="st">&quot;SQL Symphony Concert&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>full_join()</code></li>
@@ -3461,13 +3416,10 @@ vertical-align: -.125em;
 <p>Lab 4 Question 2</p>
 <p><em>The code was update to use a full_join(). This joins all the values from both datasets by the specified ID.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="ot">&lt;-</span> counties <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">&quot;California&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(county_fips_code, county_name) <span class="sc">|&gt;</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(childcare_costs, <span class="fu">join_by</span>(county_fips_code <span class="sc">==</span> county_fips_code))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>WD-6: I can use filtering joins to filter rows from a dataframe.</strong></p>
 <ul>
@@ -3476,13 +3428,10 @@ vertical-align: -.125em;
 <p>Lab 4 Question 2</p>
 <p><em>The code was updated to use semi_join() to make sure that the only childcare costs that are kept are the ones that match the counties from the counties dataset.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="ot">&lt;-</span> counties <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">&quot;California&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(county_fips_code, county_name) <span class="sc">|&gt;</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(childcare_costs, <span class="at">by =</span> <span class="st">&quot;county_fips_code&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>anti_join()</code></li>
@@ -3490,11 +3439,8 @@ vertical-align: -.125em;
 <p>Lab 5 Question Crime Scene Report Clue 5</p>
 <p><em>Update was made to code to use anti_join() to filter for people in the dataset that do not have a valid drivers license.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>people_without_license <span class="ot">&lt;-</span> person <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(drivers_license, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span> <span class="ot">=</span> <span class="st">&quot;license_id&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>WD-7: I can pivot dataframes from long to wide and visa versa</strong></p>
 <ul>
@@ -3502,8 +3448,6 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 4 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant, mc_toddler, mc_preschool) <span class="sc">|&gt;</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;California Region&quot;</span> <span class="ot">=</span> region) <span class="sc">|&gt;</span></span>
@@ -3548,15 +3492,12 @@ vertical-align: -.125em;
 <span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">aspect.ratio =</span> <span class="dv">1</span>, </span>
 <span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>)</span>
 <span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>pivot_wider()</code></li>
 </ul>
 <p>Lab 4 Question 4</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;2008&quot;</span>, <span class="st">&quot;2018&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mhi_2018) <span class="sc">|&gt;</span></span>
@@ -3566,7 +3507,6 @@ vertical-align: -.125em;
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> mhi_2018,</span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fn =</span> median) <span class="sc">|&gt;</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">2018</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="reproducibility" class="level2">
@@ -3579,8 +3519,6 @@ vertical-align: -.125em;
 </ul>
 <p>Challenge 2 Question Medium</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggridges)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> surveys,</span>
@@ -3591,21 +3529,17 @@ vertical-align: -.125em;
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Species&quot;</span>,</span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;Weight [g]&quot;</span>,</span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>Example of <strong>dplyr</strong> pipeline</li>
 </ul>
 <p>Lab 3 Question 9</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="sc">|&gt;</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(course_id, teacher_id) <span class="sc">|&gt;</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n_distinct</span>(question_no), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(count <span class="sc">==</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>Example of function formatting</li>
@@ -3616,14 +3550,11 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 3 Question 11</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(seniority <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(teacher_id) <span class="sc">|&gt;</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_percent_failing =</span> <span class="fu">mean</span>(percent_failed_cur), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(avg_percent_failing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>Example of function stops</li>
@@ -3637,35 +3568,27 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 1 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ToothGrowth <span class="sc">%&gt;%</span> </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dose =</span> <span class="fu">as.factor</span>(dose)) <span class="sc">%&gt;%</span> </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Dose of Supplement (mg/day)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Length of Teeth (mm)&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>at least one numeric variable and one categorical variable</li>
 </ul>
 <p>Lab 1 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ToothGrowth, </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> supp, <span class="at">y =</span> len)) <span class="sc">+</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Supplement&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Length of Teeth (mm)&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>at least two categorical variables</li>
 </ul>
 <p>Lab 4 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant, mc_toddler, mc_preschool) <span class="sc">|&gt;</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;California Region&quot;</span> <span class="ot">=</span> region) <span class="sc">|&gt;</span></span>
@@ -3711,20 +3634,16 @@ vertical-align: -.125em;
 <span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>dates (timeseries plot)</li>
 </ul>
 <p>Lab 5 Crime Scene Report</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>crime_scene_report <span class="sc">|&gt;</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">ymd</span>(date)) <span class="sc">|&gt;</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(city <span class="sc">==</span> <span class="st">&quot;SQL City&quot;</span>,</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         date <span class="sc">==</span> <span class="fu">ymd</span>(<span class="st">&quot;20180115&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>DVS-2: I use plot modifications to make my visualization clear to the reader.</strong></p>
 <ul>
@@ -3732,8 +3651,6 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 4 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant, mc_toddler, mc_preschool) <span class="sc">|&gt;</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;California Region&quot;</span> <span class="ot">=</span> region) <span class="sc">|&gt;</span></span>
@@ -3779,15 +3696,12 @@ vertical-align: -.125em;
 <span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>I can modify the text in my plot to be more readable</li>
 </ul>
 <p>Lab 4 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant, mc_toddler, mc_preschool) <span class="sc">|&gt;</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;California Region&quot;</span> <span class="ot">=</span> region) <span class="sc">|&gt;</span></span>
@@ -3833,7 +3747,6 @@ vertical-align: -.125em;
 <span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>I can reorder my legend to align with the colors in my plot</li>
@@ -3841,8 +3754,6 @@ vertical-align: -.125em;
 <p>Challenge 3 Question 2</p>
 <p><em>I updated this question to make sure the values in the legend appear in the oder they appear on the plot.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>teacher_evals_compare <span class="sc">|&gt;</span></span>
@@ -3863,7 +3774,6 @@ vertical-align: -.125em;
 <span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.border =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="cn">NA</span>),</span>
 <span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">size =</span> <span class="fl">0.5</span>),</span>
 <span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;gray90&quot;</span>, <span class="at">size =</span> <span class="fl">0.25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>DVS-3: I show creativity in my visualizations</strong></p>
 <ul>
@@ -3871,8 +3781,6 @@ vertical-align: -.125em;
 </ul>
 <p>Challenge 2 Question Spicy</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> surveys,</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> weight,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> species)) <span class="sc">+</span></span>
@@ -3883,15 +3791,12 @@ vertical-align: -.125em;
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Species&quot;</span>,</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;Weight [g]&quot;</span>,</span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>I can use annotations</li>
 </ul>
 <p>Challenge 2 Question Hot</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> surveys,</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> weight,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> species)) <span class="sc">+</span></span>
@@ -3917,15 +3822,12 @@ vertical-align: -.125em;
 <span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Species&quot;</span>,</span>
 <span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">&quot;Weight [g]&quot;</span>,</span>
 <span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>I can be creative…</li>
 </ul>
 <p>Lab 4 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant, mc_toddler, mc_preschool) <span class="sc">|&gt;</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;California Region&quot;</span> <span class="ot">=</span> region) <span class="sc">|&gt;</span></span>
@@ -3971,7 +3873,6 @@ vertical-align: -.125em;
 <span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>DVS-4: I can calculate numerical summaries of variables.</strong></p>
 <ul>
@@ -3979,14 +3880,11 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 4 Question 5</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;2018&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant) <span class="sc">|&gt;</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span></span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mc_infant =</span> <span class="fu">median</span>(mc_infant, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>Example using <code>across()</code></li>
@@ -3994,12 +3892,9 @@ vertical-align: -.125em;
 <p>Lab 3 Question 8</p>
 <p><em>I modified my code to use Across in one pipeline instead of 3 separate one</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>combined_summary <span class="ot">&lt;-</span> teacher_evals_clean <span class="sc">|&gt;</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="fu">across</span>(<span class="fu">c</span>(seniority, academic_degree, sex))) <span class="sc">|&gt;</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>DVS-5: I can find summaries of variables across multiple groups.</strong></p>
 <ul>
@@ -4007,26 +3902,20 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 3 Question 8</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>combined_summary <span class="ot">&lt;-</span> teacher_evals_clean <span class="sc">|&gt;</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="fu">across</span>(<span class="fu">c</span>(seniority, academic_degree, sex))) <span class="sc">|&gt;</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>Example 2</li>
 </ul>
 <p>Lab 4 Question 5</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;2018&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant) <span class="sc">|&gt;</span></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span></span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mc_infant =</span> <span class="fu">median</span>(mc_infant, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>DVS-6: I can create tables which make my summaries clear to the reader.</strong></p>
 <ul>
@@ -4034,20 +3923,15 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 3 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="sc">|&gt;</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">n_distinct</span>(teacher_id),</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">n_distinct</span>(course_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>Example 2</li>
 </ul>
 <p>Lab 4 Question 4</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;2008&quot;</span>, <span class="st">&quot;2018&quot;</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mhi_2018) <span class="sc">|&gt;</span></span>
@@ -4059,7 +3943,6 @@ vertical-align: -.125em;
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_glue =</span> <span class="st">&quot;year {study_year}&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
 <span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">year 2018</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><strong>DVS-7: I show creativity in my tables.</strong></p>
 <ul>
@@ -4077,8 +3960,6 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 3 Question 5</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="ot">&lt;-</span> teacher_evals <span class="sc">|&gt;</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;sex&quot;</span> <span class="ot">=</span> <span class="st">&quot;gender&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(no_participants <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
@@ -4093,7 +3974,6 @@ vertical-align: -.125em;
 <span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>         seniority,</span>
 <span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>         sex) <span class="sc">|&gt;</span></span>
 <span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">teacher_id =</span> <span class="fu">as.integer</span>(teacher_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>across()</code></li>
@@ -4101,11 +3981,8 @@ vertical-align: -.125em;
 <p>Lab 3 Question 7</p>
 <p><em>I modified my code to use the across function. Using the across() function makes my code more streamline and efficient.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>teacher_evals_clean <span class="sc">|&gt;</span> </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), is.na))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li><code>map()</code> functions</li>
@@ -4133,20 +4010,15 @@ vertical-align: -.125em;
 </ul>
 <p>Lab 5 Question Crime Scene Report</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>get_fit_now_member <span class="sc">|&gt;</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(id, <span class="st">&quot;^48Z&quot;</span>),</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>         membership_status <span class="sc">==</span> <span class="st">&quot;gold&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <ul>
 <li>I can connect a data wrangling pipeline into a <code>ggplot()</code></li>
 </ul>
 <p>Lab 4 Question 6</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>ca_childcare <span class="sc">|&gt;</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region, study_year, mc_infant, mc_toddler, mc_preschool) <span class="sc">|&gt;</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;California Region&quot;</span> <span class="ot">=</span> region) <span class="sc">|&gt;</span></span>
@@ -4192,7 +4064,6 @@ vertical-align: -.125em;
 <span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),</span>
 <span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="data-simulation-statisical-models" class="level2">
@@ -4208,23 +4079,17 @@ vertical-align: -.125em;
 <ul>
 <li>Example 1</li>
 </ul>
-<p>Lab 2 Question 17 &amp; 18</p>
-<p><em>I updated this code chuck to use the pipe operator. This makes my code more efficient and more tidy.</em></p>
+<p>Lab 4 Question 8</p>
+<p><em>revision. I had the variables flipped. It is important to feed the lm function the correct valuables in the manner that it expects it or it will return data that may look correct but isn’t which is misleading if the data where to be published.</em></p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(weight <span class="sc">~</span> <span class="fu">factor</span>(species), <span class="at">data =</span> surveys) <span class="sc">|&gt;</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>reg_mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(mc_infant <span class="sc">~</span> mhi_2018, <span class="at">data =</span> ca_childcare)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Assume a critical value of 0.05, the p-value from the ANOVA test is 2*10^-16 which is less than 0.05. Therefore, the difference in group means is statistically significant. Reject the null hypothesis and support the alternative. Thus there is significant statistical data to support the alternative hypothesis that at least one rodent species has a different population mean weight.</p>
 <ul>
 <li>Example 2</li>
 </ul>
 <p>Lab 1 Question 12</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable to hold supplement 1 data</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>VC <span class="ot">&lt;-</span> ToothGrowth[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>,<span class="dv">1</span>]</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable to hold supplement 2 data</span></span>
@@ -4236,7 +4101,6 @@ vertical-align: -.125em;
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the test results</span></span>
 <span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(testResults)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="revising-my-thinking" class="level2">

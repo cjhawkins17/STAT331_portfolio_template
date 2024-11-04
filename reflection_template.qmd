@@ -9,7 +9,6 @@ editor: visual
 execute: 
   eval: false
   echo: true
-code-fold: true
 ---
 
 [**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an A.
@@ -23,6 +22,7 @@ code-fold: true
 -   `csv`
 
 Lab 3 Question 2
+
 ```{r}
 #| label: wd-1-csv
 # code chunk for importing the data
@@ -32,6 +32,7 @@ teacher_evals <- read.csv(here("data", "teacher_evals.csv"))
 -   `xlsx`
 
 Practice Activity 4 Question 3
+
 ```{r}
 #| label: wd-1-xlsx
 military <- read_xlsx(here::here("data", 
@@ -46,6 +47,7 @@ military <- read_xlsx(here::here("data",
 -   `txt`
 
 Practice Activity 5 Question setup
+
 ```{r}
 #| label: wd-1-txt
 message_data <- read_csv("https://github.com/earobinson95/stat331-calpoly/raw/master/practice-activities/data/scrambled_message.txt",
@@ -55,6 +57,7 @@ message_data <- read_csv("https://github.com/earobinson95/stat331-calpoly/raw/ma
 **WD-2: I can select necessary columns from a dataset.**
 
 Lab 3 Question 5
+
 ```{r}
 #| label: wd-2
 teacher_evals_clean <- teacher_evals |>
@@ -78,6 +81,7 @@ teacher_evals_clean <- teacher_evals |>
 -   numeric
 
 Lab 3 Question 5
+
 ```{r}
 #| label: wd-3-numeric
 teacher_evals_clean <- teacher_evals |>
@@ -99,6 +103,7 @@ teacher_evals_clean <- teacher_evals |>
 -   character -- specifically a string (example must use functions from **stringr**)
 
 Lab 5 Question Crime Scene Report
+
 ```{r}
 #| label: wd-3-string
 drivers_license |>
@@ -109,6 +114,7 @@ drivers_license |>
 -   factor
 
 Lab 4 Question 2
+
 ```{r}
 #| label: wd-3-factor
 ca_childcare <- counties |>
@@ -122,6 +128,7 @@ ca_childcare <- counties |>
 Lab 5 Crime Scene Report
 
 *I made a revision to this code. I added the mutate line. I realized that I could parse the date column into a date variable to make it easier to read. This is important because I don't want readers to get confused when reading data.*
+
 ```{r}
 #| label: wd-3-date
 crime_scene_report |>
@@ -130,12 +137,12 @@ crime_scene_report |>
          date == ymd("20180115"))
 ```
 
-
 **WD-4: I can modify existing variables and create new variables in a dataframe for a *variety* of data types (e.g., numeric, integer, character, factor, date).**
 
 -   numeric (using `as.numeric()` is not sufficient)
 
 Challenge 3 Question 1
+
 ```{r}
 #| label: wd-4-numeric
 teacher_evals_compare <- teacher_evals |>
@@ -152,6 +159,7 @@ teacher_evals_compare <- teacher_evals |>
 -   character -- specifically a string (example must use functions from **stringr**)
 
 Lab 4 Question 3
+
 ```{r}
 #| label: wd-4-string
 ca_childcare <- ca_childcare |> 
@@ -220,6 +228,7 @@ ca_childcare <- ca_childcare |>
 -   factor (example must use functions from **forcats**)
 
 Lab 4 Question 3
+
 ```{r}
 #| label: wd-4-factor
 ca_childcare <- ca_childcare |> 
@@ -290,6 +299,7 @@ ca_childcare <- ca_childcare |>
 Lab 5 Crime Scene Report
 
 *Code Was updated to use date variable tpye instead of integer. This makes the code easier to read.*
+
 ```{r}
 #| label: wd-4-date
 crime_scene_report |>
@@ -305,6 +315,7 @@ crime_scene_report |>
 Lab 5 Question Clue 3
 
 *The code was updated the use a left join. This is to make sure only the values from the person dateset that matches with the interview dataset gets joined.*
+
 ```{r}
 #| label: wd-5-left
 # look though the interviews
@@ -318,6 +329,7 @@ interview |>
 Lab 5 Question Clue 4
 
 *The code was updated to use a right_join(). This makes sure the values that joins from the drivers_license dataset matches with the values from the person dataset.*
+
 ```{r}
 #| label: wd-5-right
 drivers_license |>
@@ -328,6 +340,7 @@ drivers_license |>
 -   `inner_join()`
 
 Lab 5 Question Clue 5
+
 ```{r}
 #| label: wd-5-inner
 person |>
@@ -347,6 +360,7 @@ person |>
 Lab 4 Question 2
 
 *The code was update to use a full_join(). This joins all the values from both datasets by the specified ID.*
+
 ```{r}
 #| label: wd-5-full
 ca_childcare <- counties |>
@@ -362,6 +376,7 @@ ca_childcare <- counties |>
 Lab 4 Question 2
 
 *The code was updated to use semi_join() to make sure that the only childcare costs that are kept are the ones that match the counties from the counties dataset.*
+
 ```{r}
 #| label: wd-6-semi
 ca_childcare <- counties |>
@@ -375,6 +390,7 @@ ca_childcare <- counties |>
 Lab 5 Question Crime Scene Report Clue 5
 
 *Update was made to code to use anti_join() to filter for people in the dataset that do not have a valid drivers license.*
+
 ```{r}
 #| label: wd-6-anti
 people_without_license <- person |>
@@ -386,6 +402,7 @@ people_without_license <- person |>
 -   `pivot_longer()`
 
 Lab 4 Question 6
+
 ```{r}
 #| label: wd-7-long
 ca_childcare |>
@@ -437,6 +454,7 @@ ca_childcare |>
 -   `pivot_wider()`
 
 Lab 4 Question 4
+
 ```{r}
 #| label: wd-7-wide
 ca_childcare |>
@@ -461,6 +479,7 @@ I've done this in the following provided assignments: Lab1, Lab2, Lab3, Lab4, La
 -   Example of **ggplot2** plotting
 
 Challenge 2 Question Medium
+
 ```{r}
 #| label: r-2-1
 library(ggridges)
@@ -478,6 +497,7 @@ ggplot(data = surveys,
 -   Example of **dplyr** pipeline
 
 Lab 3 Question 9
+
 ```{r}
 #| label: r-2-2
 teacher_evals_clean |>
@@ -499,6 +519,7 @@ teacher_evals_clean |>
 -   Example -- any context
 
 Lab 3 Question 11
+
 ```{r}
 #| label: r-3-example
 teacher_evals_clean |>
@@ -522,6 +543,7 @@ teacher_evals_clean |>
 -   at least two numeric variables
 
 Lab 1 Question 6
+
 ```{r}
 #| label: dvs-1-num
 ToothGrowth %>% 
@@ -534,6 +556,7 @@ ToothGrowth %>%
 -   at least one numeric variable and one categorical variable
 
 Lab 1 Question 6
+
 ```{r}
 #| label: dvs-2-num-cat
 ggplot(data = ToothGrowth, 
@@ -545,6 +568,7 @@ ggplot(data = ToothGrowth,
 -   at least two categorical variables
 
 Lab 4 Question 6
+
 ```{r}
 #| label: dvs-2-cat
 ca_childcare |>
@@ -597,6 +621,7 @@ ca_childcare |>
 -   dates (timeseries plot)
 
 Lab 5 Crime Scene Report
+
 ```{r}
 #| label: dvs-2-date
 crime_scene_report |>
@@ -610,6 +635,7 @@ crime_scene_report |>
 -   I can ensure people don't tilt their head
 
 Lab 4 Question 6
+
 ```{r}
 #| label: dvs-2-1
 ca_childcare |>
@@ -662,6 +688,7 @@ ca_childcare |>
 -   I can modify the text in my plot to be more readable
 
 Lab 4 Question 6
+
 ```{r}
 #| label: dvs-2-2
 ca_childcare |>
@@ -716,6 +743,7 @@ ca_childcare |>
 Challenge 3 Question 2
 
 *I updated this question to make sure the values in the legend appear in the oder they appear on the plot.*
+
 ```{r}
 #| label: dvs-2-3
 library(ggplot2)
@@ -745,6 +773,7 @@ teacher_evals_compare |>
 -   I can use non-standard colors
 
 Challenge 2 Question Spicy
+
 ```{r}
 #| label: dvs-3-1
 ggplot(data = surveys,
@@ -762,6 +791,7 @@ ggplot(data = surveys,
 -   I can use annotations
 
 Challenge 2 Question Hot
+
 ```{r}
 #| label: dvs-3-2
 ggplot(data = surveys,
@@ -794,6 +824,7 @@ ggplot(data = surveys,
 -   I can be creative...
 
 Lab 4 Question 6
+
 ```{r}
 #| label: dvs-3-3
 ca_childcare |>
@@ -848,6 +879,7 @@ ca_childcare |>
 -   Example using `summarize()`
 
 Lab 4 Question 5
+
 ```{r}
 #| label: dvs-4-summarize
 ca_childcare |>
@@ -862,6 +894,7 @@ ca_childcare |>
 Lab 3 Question 8
 
 *I modified my code to use Across in one pipeline instead of 3 separate one*
+
 ```{r}
 #| label: dvs-4-across
 combined_summary <- teacher_evals_clean |>
@@ -874,6 +907,7 @@ combined_summary <- teacher_evals_clean |>
 -   Example 1
 
 Lab 3 Question 8
+
 ```{r}
 #| label: dvs-5-1
 combined_summary <- teacher_evals_clean |>
@@ -884,6 +918,7 @@ combined_summary <- teacher_evals_clean |>
 -   Example 2
 
 Lab 4 Question 5
+
 ```{r}
 #| label: dvs-5-2
 ca_childcare |>
@@ -898,6 +933,7 @@ ca_childcare |>
 -   Example 1
 
 Lab 3 Question 6
+
 ```{r}
 #| label: dvs-6-1
 teacher_evals_clean |>
@@ -908,6 +944,7 @@ teacher_evals_clean |>
 -   Example 2
 
 Lab 4 Question 4
+
 ```{r}
 #| label: dvs-6-2
 ca_childcare |>
@@ -946,6 +983,7 @@ ca_childcare |>
 -   using a single function call with multiple inputs (rather than multiple function calls)
 
 Lab 3 Question 5
+
 ```{r}
 #| label: pe-1-one-call
 teacher_evals_clean <- teacher_evals |>
@@ -969,6 +1007,7 @@ teacher_evals_clean <- teacher_evals |>
 Lab 3 Question 7
 
 *I modified my code to use the across function. Using the across() function makes my code more streamline and efficient.*
+
 ```{r}
 #| label: pe-1-across
 teacher_evals_clean |> 
@@ -1026,6 +1065,7 @@ teacher_evals_clean |>
 -   I can use functions which are not superseded or deprecated
 
 Lab 5 Question Crime Scene Report
+
 ```{r}
 #| label: pe-4-1
 get_fit_now_member |>
@@ -1036,6 +1076,7 @@ get_fit_now_member |>
 -   I can connect a data wrangling pipeline into a `ggplot()`
 
 Lab 4 Question 6
+
 ```{r}
 #| label: pe-4-2
 ca_childcare |>
@@ -1107,19 +1148,21 @@ ca_childcare |>
 
 -   Example 1
 
-Lab 2 Question 17 & 18
+Lab 4 Question 8
 
-*I updated this code chuck to use the pipe operator. This makes my code more efficient and more tidy.*
+*revision. I had the variables flipped. It is important to feed the lm function the correct valuables in the manner that it expects it or it will return data that may look correct but isn't which is misleading if the data where to be published.*
+
 ```{r}
 #| label: dsm-2-1
-aov(weight ~ factor(species), data = surveys) |>
-summary()
+reg_mod1 <- lm(mc_infant ~ mhi_2018, data = ca_childcare)
+summary(reg_mod1)
 ```
-Assume a critical value of 0.05, the p-value from the ANOVA test is 2*10^-16 which is less than 0.05. Therefore, the difference in group means is statistically significant. Reject the null hypothesis and support the alternative. Thus there is significant statistical data to support the alternative hypothesis that at least one rodent species has a different population mean weight.
+
 
 -   Example 2
 
 Lab 1 Question 12
+
 ```{r}
 #| label: dsm-2-2
 # Create a variable to hold supplement 1 data
@@ -1149,15 +1192,14 @@ I noted this by making the text *italicized*
 
 <!-- How did you extended your thinking throughout the course? How did you extend your thinking on the code examples you have provided in your portfolio? -->
 
-I extended my thinking as much as I could be doing all the challenge activities. These push me to look into more of the specifics of how to use R. For example created the plot in challenge 2 really taught me how to use ggplot and get the most out of it to customize a plot to be exactly as I want it. Additionally, the challenge activities made me more comfortable with R as a language; so when I use it in the future, I already have the knowledge to apply  what I've learned by doing the challenge activities.
+I extended my thinking as much as I could be doing all the challenge activities. These push me to look into more of the specifics of how to use R. For example created the plot in challenge 2 really taught me how to use ggplot and get the most out of it to customize a plot to be exactly as I want it. Additionally, the challenge activities made me more comfortable with R as a language; so when I use it in the future, I already have the knowledge to apply what I've learned by doing the challenge activities.
 
 ## Peer Support & Collaboration
 
 <!-- Include an image or a description of feedback you gave that you are proud of (either in a peer review or in Discord). -->
 
-"Hi Eva, great job being very efficient with you code. For the most part you use one function to output all the necessary values. One recommendation I have is sometimes you don't need to store your manipulation in a variable, you can just have it outputted instead of using print(). You also did a great job with writing tidy code. I like your use of comment for almost every line - it makes it super easy to read. you were also consistent with variable spacing. One recommendation would be to use named attributed in all locations. otherwise, great job!"
-Christopher John Hawkins , Oct 20 at 1:01pm Lab 3 Code Review.
+"Hi Eva, great job being very efficient with you code. For the most part you use one function to output all the necessary values. One recommendation I have is sometimes you don't need to store your manipulation in a variable, you can just have it outputted instead of using print(). You also did a great job with writing tidy code. I like your use of comment for almost every line - it makes it super easy to read. you were also consistent with variable spacing. One recommendation would be to use named attributed in all locations. otherwise, great job!" Christopher John Hawkins , Oct 20 at 1:01pm Lab 3 Code Review.
 
 <!-- Include a description of how you grew as a collaborator through the weekly pair programming activities.   -->
 
-Through collaborating with the weekly programming activities, I learned how to better communicate about code to others. At first I had a hard time getting my thoughts and ideas across. But as I had more and more opportunists to try, I eventually got better and now my partner and I are able to bounce ideas off each other and work very effectively. I also learned  to understand what other people are trying to convey and translate those ideas into code. This helped me grew because not only did I learn how to efficiently develop code as a team, but also learn about new ways of thinking about the code and different techniques that I can incorporate into my own code.
+Through collaborating with the weekly programming activities, I learned how to better communicate about code to others. At first I had a hard time getting my thoughts and ideas across. But as I had more and more opportunists to try, I eventually got better and now my partner and I are able to bounce ideas off each other and work very effectively. I also learned to understand what other people are trying to convey and translate those ideas into code. This helped me grew because not only did I learn how to efficiently develop code as a team, but also learn about new ways of thinking about the code and different techniques that I can incorporate into my own code.
