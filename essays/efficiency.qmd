@@ -2,6 +2,8 @@
 title: "The Power of Efficiency"
 format: html
 editor: visual
+author: "Christopher Hawkins"
+eval: false
 ---
 
 As we’ve said in the class efficiency is a pivotal component of statistical computing (and data science). In this essay, give an explanation of what that term “efficiency” means in relation to statistical computing and describe some places where you encountered efficiency and understood its importance. Your essay should address the following questions:
@@ -15,3 +17,27 @@ As we’ve said in the class efficiency is a pivotal component of statistical co
 -   Why is efficiency important?
 
 -   Where did you encounter efficiency, and what were some [“a-ha” moments](https://www.merriam-webster.com/dictionary/aha%20moment) you had about efficiency? (For the latter, tie each a-ha moment to an artifact in the portfolio.)
+
+To me, efficiency means completing a task without unnecessary steps. For example, sending an email is much more efficient than writing a letter, dropping it off at a mail pickup location, waiting for it to be shipped to its destination, and having the recipient open it and read it. In terms of statistical computing and data science, efficiency involves using a single function to execute multiple tasks. It can also mean being creative, such as using specific indexing to accomplish a task without defining extra variables. In this class, I learned the importance of avoiding assignments to variables unless I needed to operate on that output later. Being efficient allows me to use the pipe operator in R, for example. This was something I was not used to initially, as my first assignments and labs involved assigning variables to almost every output. Now, I almost never use assignments unless necessary. This is important because it makes the code tidier and easier to read, as there are fewer extra lines to parse through. Additionally, when writing larger sections of code, having fewer lines can help your script run faster. One of my "a-ha" moments was realizing that R automatically iterates through datasets, so you don't need to explicitly write a for loop as you do in other programming languages. In **Challenge 7, Question 4**, mutating and summarizing data without a for loop and using the pipe operator is a great example of the powerful efficiency tools built into R.
+
+```{r}
+#| label: condition-indices-over-time
+
+average_condition_index <- data |>
+  mutate(condition_index = calculate_condition_index(weight, length)) %>%
+  group_by(species, year) %>%
+  summarize(average_condition_index = mean(condition_index, na.rm = TRUE), .groups = "drop")
+
+# Step 2: Create the plot
+ggplot(average_condition_index, mapping = aes(x = year, y = average_condition_index, color = species)) +
+  geom_point(alpha = 0.6) +            # Scatter plot for individual points
+  geom_smooth(method = "loess", se = FALSE, aes(color = species)) +  # Smoothing curve by species
+  labs(
+    title = "Average Fish Condition Index Over Time",
+    x = "Year",
+    y = "Average Condition Index",
+    color = "Species"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```

@@ -2,6 +2,8 @@
 title: "My Growth as a Data Scientist"
 format: html
 editor: visual
+author: "Christopher Hawkins"
+eval: false
 ---
 
 ***Describe how you have improved as a practitioner and student of data science this quarter through your work in the course.***
@@ -9,3 +11,81 @@ editor: visual
 -   Focus specifically on data science concepts and the skills we employed in learning them, not a laundry list of topics that you learned (those are in the syllabus, so I know them already).
 
 -   Focus on a small number of specific areas of growth for you that happened in STAT 331. Identify at least one artifact in your portfolio that illustrates each area of growth and explain how this artifact shows growth in the way you are describing.
+
+After taking this course, I grew as a data science student in multiple ways. The main takeaways for me, where I felt I grew the most, were in producing tidy and reproducible code that can be easily understood by other readers, as well as in creating clean and effective visuals that are intuitive and convey information efficiently.
+
+For example, during the first few weeks of this course, when I was learning R, my code was hard to read when I revisited it later. Initially, I could understand the code without any issues when I first wrote it. However, the importance of tidy code and reproducibility became evident when I was preparing this portfolio. I had to go back and decipher my intentions and understand the code I had written. Now, with the last few labs I have submitted, I make a concerted effort to include comments or documentation so that any reader can easily understand what my code does. This improvement is evident in **Lab 8, Question 3**, and **Lab 9, Question 1**, where I explain what each line of code accomplishes.
+
+```{r}
+#| label: double-pivot-for-summary-table
+
+# Remove duplicates based on each professor's key attributes
+clean_evals |>
+  distinct(teacher_id, sex, academic_degree, seniority) |>
+# Create categories and count each category
+  mutate(
+    seniority = as.numeric(as.character(seniority)),  # Convert seniority to numeric
+    seniority_category = ifelse(seniority <= 4, "Junior", "Senior"),
+    degree_category = case_when(
+      academic_degree == "no_dgr" ~ "No Degree",
+      academic_degree == "ma" ~ "Masters",
+      academic_degree == "dr" ~ "Doctorate",
+      academic_degree == "prof" ~ "Professor"
+    )
+  ) |>
+  summarise(
+    Female = sum(sex == "female"),
+    Male = sum(sex == "male"),
+    Junior = sum(seniority_category == "Junior"),
+    Senior = sum(seniority_category == "Senior"),
+    `No Degree` = sum(degree_category == "No Degree"),
+    Masters = sum(degree_category == "Masters"),
+    Doctorate = sum(degree_category == "Doctorate"),
+    Professor = sum(degree_category == "Professor")
+  )
+```
+
+```{r}
+#| label: function-simulation-for-random-babies
+
+randomBabies <- function(nBabies) {
+  # Create a vector representing the parents
+  parents <- 1:nBabies
+  
+  # Shuffle the babies randomly
+  babies <- sample(parents)
+  
+  # Count how many babies are correctly returned
+  sum(parents == babies)
+}
+
+# Use map_int() to simulate 10,000 times
+results <- map_int(.x = 1:10000,
+                   .f = ~ randomBabies(nBabies = 4))
+```
+
+Another area where I think I improved the most is in producing visuals that are easy to view and understand. At the beginning of the course, I often relied on R's default settings and left titles and column headings as the variables that defined them. Through this class, and while writing my Master's thesis, I learned the importance of creating visuals that engage readers and efficiently convey information. I achieved this by using color coding, adding appropriate titles, and—most importantly—considering which data to place on the x- or y-axis to avoid overly squished plots. An example of this is the plot I created for **Lab 7, Question 2**.
+
+```{r}
+#| label: visual-of-missing-values-over-time
+
+# Summarize data to count missing values in 'weight' by 'year', 'section', and 'trip'
+data |>
+  group_by(year, section, trip) |>
+  summarize(missing_weight = sum(is.na(weight)), .groups = "drop") |>
+  # Create a combined label for year and trip
+  mutate(year_trip = paste(year, trip, sep = "-")) |>
+# Plotting the data
+ggplot(mapping = aes(x = missing_weight, y = year_trip, fill = section)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Count of Missing Values in Weight by Year, Section, and Trip",
+    subtitle = "Year-Trip #",
+    x = "Count of Missing Weight Values",
+    y = "",
+    fill = "Section"
+  ) +
+  theme_minimal()
+
+  
+```

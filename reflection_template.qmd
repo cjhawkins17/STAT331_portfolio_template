@@ -9,9 +9,10 @@ editor: visual
 execute: 
   eval: false
   echo: true
+code-tools: true
 ---
 
-[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an A.
+[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an A-.
 
 [**Learning Objective Evidence:**]{.underline} In the code chunks below, provide code from Lab or Challenge assignments where you believe you have demonstrated proficiency with the specified learning target. Be sure to specify **where** the code came from (e.g., Lab 4 Question 2).
 
@@ -50,7 +51,7 @@ Practice Activity 5 Question setup
 
 ```{r}
 #| label: wd-1-txt
-message_data <- read_csv("https://github.com/earobinson95/stat331-calpoly/raw/master/practice-activities/data/scrambled_message.txt",
+message_data <- read_tsv("https://github.com/earobinson95/stat331-calpoly/raw/master/practice-activities/data/scrambled_message.txt",
                          show_col_types = FALSE)
 ```
 
@@ -312,23 +313,23 @@ crime_scene_report |>
 
 -   `left_join()`
 
-Lab 5 Question Clue 3
+Lab 4 Question 2
 
-*The code was updated the use a left join. This is to make sure only the values from the person dateset that matches with the interview dataset gets joined.*
+*The code was updated to use a left join. I did this becuase I wanted to pull datasets together. I had one with all the CA counties. Then I wanted to add the childcare_costs data set without loosing any of the data from the counties dataset.*
 
 ```{r}
-#| label: wd-5-left
-# look though the interviews
-interview |>
-  left_join(person, join_by("person_id" == "id")) |>
-  filter(person_id %in% c(14887, 16371))
+
+ca_childcare <- counties |>
+  filter(state_name == "California") |>
+  select(county_fips_code, county_name) |>
+  left_join(childcare_costs, join_by(county_fips_code == county_fips_code))
 ```
 
 -   `right_join()`
 
 Lab 5 Question Clue 4
 
-*The code was updated to use a right_join(). This makes sure the values that joins from the drivers_license dataset matches with the values from the person dataset.*
+*The code was updated to use a right_join(). In this case, I want to keep all the data from the person dataset and add the data that matches from the drivers_license dataset. I used a right_join but could have used left join if I flip the order of the datasets.*
 
 ```{r}
 #| label: wd-5-right
@@ -373,28 +374,26 @@ ca_childcare <- counties |>
 
 -   `semi_join()`
 
-Lab 4 Question 2
+Lab 5 Question Clue 3
 
-*The code was updated to use semi_join() to make sure that the only childcare costs that are kept are the ones that match the counties from the counties dataset.*
+*The code was updated to use semi_join(). I used a semi join because I was interested in the interview from the people in the witness dataset. I was not concerned with the information in the witness dataset so I used semi_join() to display only the interview from poeple that were in the witness dataset.*
 
 ```{r}
 #| label: wd-6-semi
-ca_childcare <- counties |>
-  filter(state_name == "California") |>
-  select(county_fips_code, county_name) |>
-  semi_join(childcare_costs, by = "county_fips_code")
+witness_interviews <- interview |>
+  semi_join(witnesses, by = c("person_id" = "id"))
 ```
 
 -   `anti_join()`
 
-Lab 5 Question Crime Scene Report Clue 5
+Lab 5 Question Crime Scene Report Clue 4
 
-*Update was made to code to use anti_join() to filter for people in the dataset that do not have a valid drivers license.*
+*Update was made to code to use anti_join(). I wanted to use anti_join() to filter for person that were not in the facebook_event_checkin dataset. This allowed me to see which people were not at the event and could not be the suspect. anti_join works by renterning the data from from both datasets in which there are not matches.*
 
 ```{r}
 #| label: wd-6-anti
-people_without_license <- person |>
-  anti_join(drivers_license, by = c("id" = "license_id"))
+person |>
+  anti_join(facebook_event_checkin, by = c("id" = "person_id"))
 ```
 
 **WD-7: I can pivot dataframes from long to wide and visa versa**
@@ -472,7 +471,7 @@ ca_childcare |>
 
 **R-1: I can create professional looking, reproducible analyses using RStudio projects, Quarto documents, and the here package.**
 
-I've done this in the following provided assignments: Lab1, Lab2, Lab3, Lab4, Lab5
+I've done this in the following provided assignments:  Lab5 and Lab9
 
 **R-2: I can write well documented and tidy code.**
 
@@ -509,9 +508,21 @@ teacher_evals_clean |>
 
 -   Example of function formatting
 
+Lab 9 Question 1
+
 ```{r}
 #| label: r-2-3
 
+randomBabies <- function(nBabies) {
+  # Create a vector representing the parents
+  parents <- 1:nBabies
+  
+  # Shuffle the babies randomly
+  babies <- sample(parents)
+  
+  # Count how many babies are correctly returned
+  sum(parents == babies)
+}
 ```
 
 **R-3: I can write robust programs that are resistant to changes in inputs.**
@@ -531,9 +542,28 @@ teacher_evals_clean |>
 
 -   Example of function stops
 
+Lab 9 Question 1
+
+*Update was made to code to add a function stop. This is important becuase I do not want to write code that beaks if the input from a user is not correct. This fuction stop checks if the input to the function is an integer and if not leaves a message inofrming the user.*
+
 ```{r}
 #| label: r-3-function-stops
 
+randomBabies <- function(nBabies) {
+  # Check if nBabies is an integer
+  if (!is.integer(nBabies)) {
+    stop("nBabies must be an integer.")
+  }
+
+  # Create a vector representing the parents
+  parents <- 1:nBabies
+
+  # Shuffle the babies randomly
+  babies <- sample(parents)
+
+  # Count how many babies are correctly returned
+  sum(parents == babies)
+}
 ```
 
 ## Data Visualization & Summarization
@@ -774,18 +804,22 @@ teacher_evals_compare |>
 
 Challenge 2 Question Spicy
 
+*Update to use my own color package (https://www.rdocumentation.org/packages/viridis/versions/0.2.5/topics/scale_color_viridis) to create a more unique plot*
+
 ```{r}
 #| label: dvs-3-1
+
+library(viridis)
 ggplot(data = surveys,
        mapping = aes(x = weight,
                      y = species)) +
-  geom_jitter(aes(color = genus), alpha = 0.60) +
-  geom_boxplot(outliers = FALSE, alpha  = 0.00) +
-  scale_color_manual(values = cdPalette_grey) + 
-  labs(title = "Distribution of weight for different rodent species",
-       subtitle = "Species",
-           x = "Weight [g]",
-           y = "")
+geom_jitter(aes(color = genus), alpha = 0.60) +
+geom_boxplot(outliers = FALSE, alpha = 0.00) +
+scale_color_viridis(discrete = TRUE) +
+labs(title = "Distribution of weight for different rodent species",
+     subtitle = "Species",
+     x = "Weight [g]",
+     y = "")
 ```
 
 -   I can use annotations
@@ -823,55 +857,28 @@ ggplot(data = surveys,
 
 -   I can be creative...
 
-Lab 4 Question 6
+Lab 7 Question 2
 
 ```{r}
 #| label: dvs-3-3
-ca_childcare |>
-  select(region, study_year, mc_infant, mc_toddler, mc_preschool) |>
-  rename("California Region" = region) |>
-  pivot_longer(cols = starts_with("mc_"),
-               names_to = "age_group",
-               values_to = "median_cost") |>
-  mutate(age_group = fct_relevel(fct_recode(age_group,
-                                          "Infant" = "mc_infant",
-                                          "Toddler" = "mc_toddler",
-                                          "Preschool" = "mc_preschool"),
-                                "Infant",
-                                "Toddler",
-                                "Preschool")) |>
-  mutate(`California Region` = fct_relevel(`California Region`,
-                              "San Francisco Bay Area",
-                              "Orange County",
-                              "Los Angeles County",
-                              "Northern San Joaquin Valley",
-                              "Central Coast",
-                              "Inland Empire",
-                              "Superior California",
-                              "Southern San Joaquin Valley",
-                              "San Diego-Imperial",
-                              "North Coast")) |>
-  ggplot(mapping = aes(x = study_year,
-                           y = median_cost,
-                           color = `California Region`)) +
-  geom_point(size = 0.5) +
-  geom_smooth(linewidth = 0.5) +
-  facet_wrap(~ age_group,
-             labeller = label_value) +
-  labs(subtitle = "Weekly Median Price for Center-Based Childcare ($)",
-       x = "Study Year",
-       y = "") +
-  scale_x_continuous(breaks = seq(2008, 2018, by = 2),
-                     minor_breaks = seq(2008, 2018, by = 1),
-                     limits = c(2008, 2018)) +
-  scale_y_continuous(breaks = seq(100, 500, by = 100),
-                     minor_breaks = seq(100, 500, by = 50),
-                     limits = c(100, 500)) +
-  theme(
-    aspect.ratio = 1, 
-    axis.text.x = element_text(size = 6),
-    axis.text.y = element_text(size = 6),
-  )
+
+# Summarize data to count missing values in 'weight' by 'year', 'section', and 'trip'
+data |>
+  group_by(year, section, trip) |>
+  summarize(missing_weight = sum(is.na(weight)), .groups = "drop") |>
+  # Create a combined label for year and trip
+  mutate(year_trip = paste(year, trip, sep = "-")) |>
+# Plotting the data
+ggplot(mapping = aes(x = missing_weight, y = year_trip, fill = section)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Count of Missing Values in Weight by Year, Section, and Trip",
+    subtitle = "Year-Trip #",
+    x = "Count of Missing Weight Values",
+    y = "",
+    fill = "Section"
+  ) +
+  theme_minimal()
 ```
 
 **DVS-4: I can calculate numerical summaries of variables.**
@@ -932,48 +939,201 @@ ca_childcare |>
 
 -   Example 1
 
-Lab 3 Question 6
+Challenge 9 Lab 8 Question 3
 
 ```{r}
 #| label: dvs-6-1
-teacher_evals_clean |>
-  summarise(n_distinct(teacher_id),
-            n_distinct(course_id))
+
+# Remove duplicates based on each professor's key attributes
+clean_evals |>
+  distinct(teacher_id, sex, academic_degree, seniority) |>
+# Create categories and count each category
+  mutate(
+    seniority = as.numeric(as.character(seniority)),  # Convert seniority to numeric
+    seniority_category = ifelse(seniority <= 4, "Junior", "Senior"),
+    degree_category = case_when(
+      academic_degree == "no_dgr" ~ "No Degree",
+      academic_degree == "ma" ~ "Masters",
+      academic_degree == "dr" ~ "Doctorate",
+      academic_degree == "prof" ~ "Professor"
+    )
+  ) |>
+  summarise(
+    Female = sum(sex == "female"),
+    Male = sum(sex == "male"),
+    Junior = sum(seniority_category == "Junior"),
+    Senior = sum(seniority_category == "Senior"),
+    `No Degree` = sum(degree_category == "No Degree"),
+    Masters = sum(degree_category == "Masters"),
+    Doctorate = sum(degree_category == "Doctorate"),
+    Professor = sum(degree_category == "Professor")
+  ) |>
+# Create a formatted table
+kable(
+  caption = "Summary of Teacher Categories and Counts", 
+  col.names = c("Female", "Male", "Junior", "Senior", 
+                "No Degree", "Masters", "Doctorate", "Professor"),
+  align = "l"
+) |> 
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed"))
 ```
 
 -   Example 2
 
-Lab 4 Question 4
+Challenge 9 Question 2
 
 ```{r}
 #| label: dvs-6-2
-ca_childcare |>
-  filter(study_year %in% c("2008", "2018")) |>
-  select(region, study_year, mhi_2018) |>
-  group_by(region) |>
-  pivot_wider(id_cols = region,
-              names_from = study_year,
-              values_from = mhi_2018,
-              values_fn = median,
-              names_glue = "year {study_year}") |>
-  ungroup() |>
-  arrange(desc(`year 2018`))
+results_df <- enframe(results, 
+        name = "simulation_number", 
+        value = "ncorrect") |>
+  count(ncorrect, name = "count") |>
+  mutate(proportion = count / sum(count))
+
+# Create a formatted table using the gt package
+results_df |> 
+  gt() |> 
+  # Add a title and subtitle
+  tab_header(
+    title = "Simulation Results Summary",
+    subtitle = "Proportions of Correct Simulations"
+  ) |> 
+  # Format the `proportion` column as percentages
+  fmt_percent(
+    columns = proportion, 
+    decimals = 2
+  ) |> 
+  # Add row striping
+  tab_style(
+    style = cell_fill(color = "lightgray"),
+    locations = cells_body(rows = seq(1, nrow(results_df), by = 2))
+  ) |> 
+  # Add borders to the table
+  tab_options(
+    table.border.top.color = "black",
+    table.border.bottom.color = "black",
+    heading.align = "center"
+  ) |> 
+  # Adjust font size
+  tab_options(
+    table.font.size = px(14)
+  ) |> 
+  # Configure custom column labels
+  cols_label(
+    ncorrect = "Correct Simulations",
+    count = "Count of Occurrences",
+    proportion = "Proportion (%)"
+  )
 ```
 
 **DVS-7: I show creativity in my tables.**
 
 -   Example 1
 
+Challenge 9 Lab 8 Question 3
+
+*I added colors to the table to make the table pop more.*
+
 ```{r}
 #| label: dvs-7-1
+
+# Summarizing teacher categories and creating an elegant table
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+clean_evals |>
+  # Remove duplicates based on teacher attributes
+  distinct(teacher_id, sex, academic_degree, seniority) |>
+  # Create categories for seniority and academic degrees
+  mutate(
+    seniority = as.numeric(as.character(seniority)),
+    seniority_category = ifelse(seniority <= 4, "Junior", "Senior"),
+    degree_category = case_when(
+      academic_degree == "no_dgr" ~ "No Degree",
+      academic_degree == "ma" ~ "Masters",
+      academic_degree == "dr" ~ "Doctorate",
+      academic_degree == "prof" ~ "Professor"
+    )
+  ) |>
+  # Summarise counts for each category
+  summarise(
+    Female = sum(sex == "female"),
+    Male = sum(sex == "male"),
+    Junior = sum(seniority_category == "Junior"),
+    Senior = sum(seniority_category == "Senior"),
+    `No Degree` = sum(degree_category == "No Degree"),
+    Masters = sum(degree_category == "Masters"),
+    Doctorate = sum(degree_category == "Doctorate"),
+    Professor = sum(degree_category == "Professor")
+  ) |>
+  # Create a formatted table with enhanced styling
+  kable(
+    caption = "Summary of Teacher Categories and Counts",
+    col.names = c("Female", "Male", "Junior", "Senior",
+                  "No Degree", "Masters", "Doctorate", "Professor"),
+    align = c("c", "c", "c", "c", "c", "c", "c", "c")
+  ) |>
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = FALSE,
+    position = "center"
+  ) |>
+  add_header_above(c(" " = 2, "Seniority" = 2, "Academic Degrees" = 4)) |>
+  row_spec(0, bold = TRUE, color = "white", background = "#0073C2") |>
+  column_spec(1, bold = TRUE, background = "#f7f7f7")
 
 ```
 
 -   Example 2
 
+Challenge 9 Question 2
+
+*I tried to make this able as close to those found in the academic Journals I read such as 'Composite Part B and 'Polymer Composites' . * 
+
 ```{r}
 #| label: dvs-7-2
 
+results_df <- enframe(results, 
+        name = "simulation_number", 
+        value = "ncorrect") |>
+  count(ncorrect, name = "count") |>
+  mutate(proportion = count / sum(count))
+
+# Create a formatted table using the gt package
+results_df |> 
+  gt() |> 
+  # Add a title and subtitle
+  tab_header(
+    title = "Simulation Results Summary",
+    subtitle = "Proportions of Correct Simulations"
+  ) |> 
+  # Format the `proportion` column as percentages
+  fmt_percent(
+    columns = proportion, 
+    decimals = 2
+  ) |> 
+  # Add row striping
+  tab_style(
+    style = cell_fill(color = "lightgray"),
+    locations = cells_body(rows = seq(1, nrow(results_df), by = 2))
+  ) |> 
+  # Add borders to the table
+  tab_options(
+    table.border.top.color = "black",
+    table.border.bottom.color = "black",
+    heading.align = "center"
+  ) |> 
+  # Adjust font size
+  tab_options(
+    table.font.size = px(14)
+  ) |> 
+  # Configure custom column labels
+  cols_label(
+    ncorrect = "Correct Simulations",
+    count = "Count of Occurrences",
+    proportion = "Proportion (%)"
+  )
 ```
 
 ## Program Efficiency
@@ -1016,48 +1176,125 @@ teacher_evals_clean |>
 
 -   `map()` functions
 
+Lab 8 Question 1
+
 ```{r}
 #| label: pe-1-map-1
 
+tibble(column = names(surveys), 
+       class_type = map_chr(.x = surveys, .f = class)) |> 
+  pivot_wider(names_from = column, 
+              values_from = class_type)
 ```
 
 **PE-2: I can write functions to reduce repetition in my code.**
 
 -   Function that operates on vectors
 
+Lab 7 Question 4
+
 ```{r}
 #| label: pe-2-1
 
+rescale_01 <- function(input_vector) {
+  # Check if the input vector is numeric
+  if (!is.numeric(input_vector)) {
+    stop("Error: The input vector must be numeric.")
+  }
+  
+  # Check if the length of the input vector is greater than 1
+  if (length(input_vector) <= 1) {
+    stop("Error: The input vector must have more than one element.")
+  }
+  # Get the range of the input vector (min and max values)
+  min_max <- range(input_vector, na.rm = TRUE)
+  # Calculate the normalized vector using the range
+  normalized_vector <- (input_vector - min_max[1]) / (min_max[2] - min_max[1])
+  return(normalized_vector)
+}
 ```
 
 -   Function that operates on data frames
 
+Lab 7 Question 8
+
 ```{r}
 #| label: pe-2-2
 
+rescale_column <- function(df, var_names) {
+  
+  # check is input is a date frame
+  stopifnot(is.data.frame(df))
+  
+  df |> 
+    mutate(
+      across(
+        .cols = {{var_names}},
+        .fns = ~ rescale_01(.),
+        .names = "{.col}"
+      )
+    )
+}
 ```
 
 **PE-3:I can use iteration to reduce repetition in my code.**
 
 -   `across()`
 
+Lab 7 Question 8
+
 ```{r}
 #| label: pe-3-across
+
+rescale_column <- function(df, var_names) {
+  
+  # check is input is a date frame
+  stopifnot(is.data.frame(df))
+  
+  df |> 
+    mutate(
+      across(
+        .cols = {{var_names}},
+        .fns = ~ rescale_01(.),
+        .names = "{.col}"
+      )
+    )
+}
 
 ```
 
 -   `map()` function with **one** input (e.g., `map()`, `map_chr()`, `map_dbl()`, etc.)
 
+Lab 8 Question 2
+
 ```{r}
 #| label: pe-3-map-1
 
+clean_evals <- bind_cols(map_at(.x  = evals,
+                   .at = c("teacher_id",
+                           "weekday",
+                           "academic_degree",
+                           "seniority",
+                           "sex"),
+                   .f = as.factor
+                  )
+            )
+# Show that the variables are factors
+map_chr(.x = clean_evals, .f = class)
 ```
 
 -   `map()` function with **more than one** input (e.g., `map_2()` or `pmap()`)
 
+Lab 9 Question 6
+
 ```{r}
 #| label: pe-3-map-2
 
+all_simulations <- grid |> 
+  mutate(simulated_means = pmap(.l = list(n = n, df = df), 
+                                .f = simulate_means)
+         ) |> 
+  unnest(simulated_means) 
 ```
 
 **PE-4: I can use modern tools when carrying out my analysis.**
@@ -1132,16 +1369,63 @@ ca_childcare |>
 
 -   Example 1
 
+Lab 9 Question 1-2
+
 ```{r}
 #| label: dsm-1-1
 
+randomBabies <- function(nBabies) {
+  # Create a vector representing the parents
+  parents <- 1:nBabies
+  
+  # Shuffle the babies randomly
+  babies <- sample(parents)
+  
+  # Count how many babies are correctly returned
+  sum(parents == babies)
+}
+
+# Use map_int() to simulate 10,000 times
+results <- map_int(.x = 1:10000,
+                   .f = ~ randomBabies(nBabies = 4))
+results_df <- enframe(results, 
+        name = "simulation_number", 
+        value = "ncorrect") |>
+  count(ncorrect, name = "count") |>
+  mutate(proportion = count / sum(count))
+results_df
 ```
 
 -   Example 2
 
+Lab 9 Question 4-7
+
 ```{r}
 #| label: dsm-1-2
 
+simulate_means <- function(n, df){
+  map_dbl(.x = 1:n, 
+          .f = ~ rchisq(n = 100, df = df) %>% mean()
+          )
+}
+grid <- crossing(n = c(10, 100, 1000, 10000), 
+                 df = 10)
+all_simulations <- grid |> 
+  mutate(simulated_means = pmap(.l = list(n = n, df = df), 
+                                .f = simulate_means)
+         ) |> 
+  unnest(simulated_means) 
+all_simulations |>
+  group_by(n) |>
+  summarise(Mean = mean(simulated_means),
+            .groups = 'drop') |>
+  pivot_wider(id_cols = everything(),
+              names_from = n,
+              values_from = Mean) |>
+  rename('Simulated Means = 10' = '10',
+         'Simulated Means = 100' = '100',
+         'Simulated Means = 1000' = '1000',
+         'Simulated Means = 10000' = '10000')
 ```
 
 **DSSM-2: I can conduct common statistical analyses in R.**
@@ -1158,21 +1442,19 @@ reg_mod1 <- lm(mc_infant ~ mhi_2018, data = ca_childcare)
 summary(reg_mod1)
 ```
 
-
 -   Example 2
 
 Lab 1 Question 12
 
+*I updated the code to reference the columns in the function call.*
+
 ```{r}
 #| label: dsm-2-2
-# Create a variable to hold supplement 1 data
-VC <- ToothGrowth[1:30,1]
-# Create a variable to hold supplement 2 data
-OJ <- ToothGrowth[31:60,1]
-
-# Assume unequal variances
-# Assume two-sided alternative
-testResults <- t.test(x = VC, y = OJ, alternative = "two.sided", var.equal = FALSE)
+# Perform the t-test using the ToothGrowth dataset
+testResults <- t.test(len ~ supp, 
+                      data = ToothGrowth, 
+                      alternative = "two.sided", 
+                      var.equal = FALSE)
 
 # Display the test results
 print(testResults)
